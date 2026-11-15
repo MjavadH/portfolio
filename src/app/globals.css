@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+/* class-based dark mode (next-themes sets .dark on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   Design tokens. See docs/DESIGN.md
+   Palette follows 60 / 30 / 10; glass tokens sit on top of it.
+   ============================================================ */
+:root {
+  --bg: #f6f0e4; /* cream: 60% */
+  --fg: #1b2a4e; /* lapis: 30% */
+  --muted: #55607e;
+  --line: #d9ceb8;
+  --accent: #0b8f9c; /* turquoise: 10% */
+  --gold: #b8923a; /* tiny details only */
+
+  /* glass */
+  --glass-bg: rgb(255 255 255 / 0.42);
+  --glass-bg-strong: rgb(255 255 255 / 0.68);
+  --glass-tint: rgb(11 143 156 / 0.16);
+  --glass-border: rgb(255 255 255 / 0.65);
+  --glass-edge: rgb(27 42 78 / 0.08);
+  --glass-highlight: rgb(255 255 255 / 0.9);
+  --glass-shadow: 0 10px 32px rgb(27 42 78 / 0.12);
+  --glass-blur: 18px;
+  --glass-saturate: 1.6;
+
+  /* ambient light behind the glass */
+  --orb-1: rgb(11 143 156 / 0.35);
+  --orb-2: rgb(184 146 58 / 0.28);
+  --orb-3: rgb(60 80 160 / 0.22);
+}
+
+.dark {
+  --bg: #0b1226;
+  --fg: #ece6d6;
+  --muted: #a3aecb;
+  --line: #24305a;
+  --accent: #2fc4cf;
+  --gold: #d9b45a;
+
+  --glass-bg: rgb(255 255 255 / 0.06);
+  --glass-bg-strong: rgb(18 28 58 / 0.62);
+  --glass-tint: rgb(47 196 207 / 0.18);
+  --glass-border: rgb(255 255 255 / 0.14);
+  --glass-edge: rgb(0 0 0 / 0.35);
+  --glass-highlight: rgb(255 255 255 / 0.22);
+  --glass-shadow: 0 14px 40px rgb(0 0 0 / 0.45);
+
+  --orb-1: rgb(47 196 207 / 0.22);
+  --orb-2: rgb(217 180 90 / 0.14);
+  --orb-3: rgb(70 90 200 / 0.3);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-gold: var(--gold);
+  --font-sans: "Vazirmatn Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+html[lang="en"] {
+  --font-sans: "Inter Variable", "Vazirmatn Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  line-height: 1.8; /* Persian needs generous leading */
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   Glass utilities
+   Use:  glass          standard frosted surface
+         glass-strong   more opaque, for text-heavy cards
+         glass-tint     accent-tinted (primary buttons)
+   Always pair with a radius, e.g. "glass rounded-2xl".
+   Only transform/opacity should ever be animated on these.
+   ============================================================ */
+@utility glass {
+  position: relative;
+  isolation: isolate;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    inset 0 -1px 0 var(--glass-edge),
+    var(--glass-shadow);
+
+  /* liquid feel: a soft specular sheen that can follow the pointer
+     (set --mx / --my from JS later; defaults sit top-start) */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        120% 90% at var(--mx, 20%) var(--my, 0%),
+        var(--glass-highlight) 0%,
+        transparent 55%
+      ),
+      linear-gradient(135deg, rgb(255 255 255 / 0.12), transparent 40%);
+    opacity: 0.55;
+  }
+}
+
+@utility glass-strong {
+  background: var(--glass-bg-strong);
+}
+
+@utility glass-tint {
+  background: linear-gradient(var(--glass-tint), var(--glass-tint)), var(--glass-bg);
+  border-color: color-mix(in oklab, var(--accent) 45%, transparent);
+}
+
+/* Ambient light: the thing the glass actually blurs.
+   Glass without a colourful backdrop just looks grey. */
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40vmax 40vmax at 15% 10%, var(--orb-1), transparent 70%),
+    radial-gradient(35vmax 35vmax at 85% 30%, var(--orb-2), transparent 70%),
+    radial-gradient(45vmax 45vmax at 50% 95%, var(--orb-3), transparent 70%);
+}
+
+/* Fallbacks: no backdrop-filter support, or user asks for less transparency */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: var(--glass-bg-strong);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: var(--glass-bg-strong);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .glass::before {
+    display: none;
+  }
+}
+
+/* Lenis recommended base styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "title": "Your Name | Developer & Designer",
+    "description": "My personal website and portfolio"
+  },
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Your Name",
+    "tagline": "One sentence that defines your work.",
+    "cta": "See what I've built",
+    "resume": "Download résumé"
+  },
+  "about": { "title": "About", "body": "A short, personal text goes here." },
+  "projects": { "title": "Projects", "empty": "Projects are coming soon." },
+  "skills": { "title": "Skills" },
+  "contact": { "title": "Contact", "email": "Send an email" },
+  "a11y": {
+    "toggleTheme": "Toggle light and dark mode",
+    "switchLanguage": "Switch language to Persian"
+  },
+  "common": { "switchLanguageLabel": "فا" }
+}
