@@ -1,27 +1,119 @@
 {
   "meta": {
-    "title": "Your Name | Developer & Designer",
-    "description": "My personal website and portfolio"
+    "title": "MjavadH | Software Developer",
+    "description": "Software developer focused on full-stack web development, with experience building desktop tools, plugins, and bots. View projects, skills, and contact details."
   },
   "nav": {
+    "label": "Main navigation",
     "about": "About",
     "projects": "Projects",
     "skills": "Skills",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "settings": "Settings",
+    "language": "Language",
+    "theme": "Appearance",
+    "themeHint": "Light or dark",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "education": "Education",
+    "articles": "Articles"
   },
   "hero": {
-    "name": "Your Name",
-    "tagline": "One sentence that defines your work.",
-    "cta": "See what I've built",
-    "resume": "Download résumé"
+    "name": "MjavadH",
+    "tagline": "Software developer building web products and practical software tools",
+    "resume": "Download Resume",
+    "availability": "Available for full-time roles and independent projects"
   },
-  "about": { "title": "About", "body": "A short, personal text goes here." },
-  "projects": { "title": "Projects", "empty": "Projects are coming soon." },
-  "skills": { "title": "Skills" },
-  "contact": { "title": "Contact", "email": "Send an email" },
+  "about": {
+    "title": "About",
+    "lead": "I turn problems into working software",
+    "body": "I'm MjavadH, a software developer focused primarily on full-stack web development. I also build desktop tools, plugins, and bots. My work spans user interfaces and user experience, as well as APIs and backend logic.",
+    "body2": "I care about software architecture, code quality, security, and maintainability. I choose technologies according to a project’s needs and favour solutions that remain dependable and practical to extend.",
+    "portraitCaption": "Available for on-site and remote work",
+    "portraitAlt": "MjavadH, software developer"
+  },
+  "education": {
+    "title": "Education",
+    "heading": "Education and training",
+    "present": "Present"
+  },
+  "projects": {
+    "title": "Projects",
+    "heading": "Selected work",
+    "empty": "Projects are being prepared for publication.",
+    "problem": "Problem",
+    "role": "My role",
+    "tech": "Technologies",
+    "outcome": "Implementation",
+    "live": "View project",
+    "repo": "View source code",
+    "caseStudy": "Project details",
+    "backToProjects": "Back to projects",
+    "nextProject": "Next project",
+    "hint": "Open a project to read about its implementation and technical decisions",
+    "detail": {
+      "myRole": "My role",
+      "links": "Links",
+      "year": "Year",
+      "client": "Client",
+      "duration": "Duration",
+      "license": "License"
+    },
+    "approach": "Implementation details"
+  },
+  "articles": {
+    "title": "Articles",
+    "heading": "Writing and publications",
+    "open": "Read article",
+    "items": [
+      {
+        "title": "A Review of PWA, SPA, and MPA Web Applications",
+        "description": "This article compares PWA, SPA, and MPA in terms of structure, delivery, and user experience. It outlines the advantages and limitations of each approach and explains where each can fit in modern web development."
+      },
+      {
+        "title": "Smart Homes in the Age of the Internet of Things",
+        "description": "This article examines how smart homes built around the Internet of Things (IoT) are structured, how connected devices communicate, and what this means for information security, household comfort, and energy use."
+      },
+      {
+        "title": "Flutter and Its Applications in Software Development",
+        "description": "This article introduces Flutter and its use in cross-platform software development and user interface design. It discusses the framework’s capabilities for building applications that target multiple platforms."
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills",
+    "heading": "Skills and working practice",
+    "intro": "I choose technology to fit the problem. These are the tools I rely on across full-stack web products, desktop software, bots and AI-assisted workflows"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "What can we work on together?",
+    "body": "Get in touch via Telegram or email to discuss a software project, a feature implementation, or a role within your development team.",
+    "cta": "Contact me on Telegram",
+    "githubLabel": "GitHub",
+    "linkedinLabel": "LinkedIn",
+    "resumeLabel": "Resume",
+    "telegramLabel": "Telegram",
+    "ctaLabel": "Primary contact",
+    "elsewhere": "Other ways to reach me",
+    "emailLabel": "Email"
+  },
+  "footer": {
+    "tagline": "Built with care. Improved continuously.",
+    "rights": "All rights reserved."
+  },
   "a11y": {
-    "toggleTheme": "Toggle light and dark mode",
-    "switchLanguage": "Switch language to Persian"
+    "toggleTheme": "Toggle light and dark themes",
+    "toggleThemeDark": "Switch to dark theme",
+    "toggleThemeLight": "Switch to light theme",
+    "switchLanguage": "Switch language to Persian",
+    "skipToContent": "Skip to main content",
+    "themeLight": "Light",
+    "themeDark": "Dark"
   },
-  "common": { "switchLanguageLabel": "فا" }
+  "common": {
+    "switchLanguageLabel": "فا"
+  }
 }

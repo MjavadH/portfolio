@@ -4,11 +4,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { useEffect } from "react";
+import { registerLenis } from "@/lib/section-nav";
 
-/**
- * Lenis drives the scroll; GSAP's ticker feeds Lenis; ScrollTrigger
- * updates on every Lenis scroll event. This keeps all three in sync.
- */
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -16,6 +13,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({ autoRaf: false });
+    registerLenis(lenis);
     lenis.on("scroll", ScrollTrigger.update);
 
     const tick = (time: number) => lenis.raf(time * 1000);
@@ -23,6 +21,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      registerLenis(null);
       gsap.ticker.remove(tick);
       lenis.destroy();
     };
