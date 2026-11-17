@@ -241,17 +241,39 @@ html:is([lang="en"]) .lead {
   margin-block-start: var(--space-block);
 }
 
-/* Section shell: half the viewport is air. */
+:root {
+  --shell-max: 78rem;
+  --shell-pad: clamp(1.25rem, 5vw, 4.5rem);
+  --shell-gutter: max(0px, calc((100vw - var(--shell-max)) / 2));
+  --rail-clear: 0rem;
+}
+@media (min-width: 80rem) {
+  :root {
+    --rail-clear: 5rem;
+  }
+}
+
 @utility shell {
   width: 100%;
-  max-width: 78rem;
+  max-width: var(--shell-max);
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 5vw, 4.5rem);
+  padding-inline-start: calc(
+    var(--shell-pad) +
+    max(0px, var(--rail-clear) - var(--shell-gutter) - var(--shell-pad))
+  );
+  padding-inline-end: var(--shell-pad);
 }
 
 @utility hairline {
   border-color: var(--line);
   border-width: 1px;
+}
+
+.rail-scroll {
+  scrollbar-width: none;
+}
+.rail-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 /* Top fade.
@@ -540,28 +562,45 @@ html.lenis body {
   }
 }
 
-/* ============================================================
-   Scrollbar
-
-   The native scrollbar is hidden: on Windows it is a 17px grey trough that
-   breaks the plate, and on macOS it flickers in over the content while you
-   scroll. Hiding it alone would remove the only position cue a reader has, so
-   the fixed progress hairline in `scroll-progress.tsx` replaces it: same
-   information, drawn in the site's own accent.
-
-   `scrollbar-width: none` is the standard property; the -webkit- rule covers
-   older WebKit. Neither disables scrolling, only the gutter's paint.
-   ============================================================ */
-html {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+:root {
+  --scrollbar-size: 6px;
+  --scrollbar-thumb: rgb(11 143 156 / 0.5);
+  --scrollbar-thumb-hover: rgb(11 143 156 / 0.78);
+  --scrollbar-thumb-active: rgb(11 143 156 / 1);
 }
-html::-webkit-scrollbar,
-body::-webkit-scrollbar,
-*::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  display: none;
+.dark {
+  --scrollbar-thumb: rgb(47 196 207 / 0.55);
+  --scrollbar-thumb-hover: rgb(47 196 207 / 0.8);
+  --scrollbar-thumb-active: rgb(47 196 207 / 1);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  background-clip: content-box;
+  border: 1px solid transparent;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+  border-width: 1px;
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--scrollbar-thumb-active);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 /* Custom cursor: only show a native cursor when ours is active (fine pointers) */
