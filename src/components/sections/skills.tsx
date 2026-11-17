@@ -70,7 +70,7 @@ export function Skills() {
         </div>
 
         <Reveal className="block-y">
-          <div className="glass overflow-hidden rounded-3xl lg:grid lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)]">
+          <div className="glass overflow-x-clip rounded-3xl lg:grid lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)]">
             <div
               role="tablist"
               aria-label={t("heading")}
