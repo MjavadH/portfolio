@@ -98,7 +98,7 @@ export function MobileDock() {
                 <motion.span
                   layoutId="dock-mark"
                   aria-hidden
-                  className="absolute -bottom-0.5 h-0.5 w-4 rounded-full bg-accent"
+                  className="absolute inset-x-0 bottom-0.5 mx-auto size-1.25 rounded-full bg-accent"
                   transition={{ type: "spring", stiffness: 420, damping: 34 }}
                 />
               )}

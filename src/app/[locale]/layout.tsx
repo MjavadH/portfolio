@@ -8,9 +8,10 @@ import "@fontsource-variable/inter";
 import "../globals.css";
 
 import { Footer } from "@/components/layout/footer";
-import { Header } from "@/components/layout/header";
 import { MobileDock } from "@/components/layout/mobile-dock";
+import { SideRail } from "@/components/layout/side-rail";
 import { SkipLink } from "@/components/layout/skip-link";
+import { TopBar } from "@/components/layout/top-bar";
 import { HashArrival } from "@/components/providers/hash-arrival";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
 import { ThemeProvider } from "@/components/providers/theme-provider";
@@ -83,7 +84,8 @@ export default async function LocaleLayout({ children, params }: Props) {
               <HashArrival />
               <SkipLink />
               <CustomCursor />
-              <Header />
+              <TopBar />
+              <SideRail />
               <main id="main">{children}</main>
               <Footer />
               <MobileDock />
