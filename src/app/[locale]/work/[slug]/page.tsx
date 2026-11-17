@@ -97,7 +97,7 @@ export default async function CaseStudyPage({ params }: Props) {
   ];
 
   return (
-    <article className="pt-28 sm:pt-32">
+    <article className="pt-28 sm:pt-32 overflow-x-clip">
       <header className="shell relative">
         <Shamse className="-inset-e-24 top-20 size-104 sm:-inset-e-32 sm:size-160" />
 

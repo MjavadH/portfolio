@@ -103,7 +103,7 @@ export function Education() {
   }, [reduce, ordered.length]);
 
   return (
-    <section id="education" className="section-y-lead relative scroll-mt-24">
+    <section id="education" className="section-y-lead relative scroll-mt-24 overflow-x-clip">
       <div className="shell">
         <Shamse className="-inset-e-16 top-30 size-80 sm:inset-e-20 sm:size-136" />
         <Reveal>

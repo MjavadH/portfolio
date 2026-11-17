@@ -25,7 +25,7 @@ export function Articles() {
     <section
       id="articles"
       aria-labelledby="articles-heading"
-      className="section-y relative scroll-mt-24"
+      className="section-y relative scroll-mt-24 overflow-x-clip"
     >
       <div className="shell relative">
         <Shamse className="-inset-e-16 -top-20 size-88 sm:-inset-e-28 sm:size-136" />
