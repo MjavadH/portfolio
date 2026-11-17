@@ -25,14 +25,14 @@ export function Footer() {
     <footer className="relative pb-28 pt-12 md:pb-8">
       <div className="shell relative">
         <div className="glass mx-auto flex w-full max-w-4xl flex-col items-center gap-5 rounded-[1.75rem] px-6 py-6 md:flex-row md:justify-between md:gap-6 md:rounded-full md:px-7 md:py-3.5">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 md:w-1/3">
             <Monogram className="size-8 text-fg" />
             <p className="small font-semibold" dir="ltr">
               MjavadH
             </p>
           </div>
 
-          <nav aria-label={tc("elsewhere")}>
+          <nav className="md:w-1/3 md:place-items-center" aria-label={tc("elsewhere")}>
             <ul className="flex items-center gap-2">
               {LINKS.map(({ key, href, Icon, external }) => (
                 <li key={key}>
@@ -49,7 +49,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          <p className="micro flex items-center gap-x-2 text-muted">
+          <p className="micro flex md:justify-end gap-x-2 text-muted md:w-1/3">
             <span className="tabular-nums" dir={fa ? "rtl" : "ltr"}>
               © {year}
             </span>
